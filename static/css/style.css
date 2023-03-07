@@ -105,11 +105,6 @@ ul {
 ul ul {
     margin-bottom: 0;
 }
-
-dfn {
-    font-style: italic;
-}
-
 strong {
     font-weight: bolder;
 }
@@ -150,18 +145,6 @@ img {
     border-style: none;
 }
 
-svg {
-    overflow: hidden;
-    vertical-align: middle;
-}
-
-caption {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    caption-side: bottom;
-    text-align: left;
-    color: #8898aa;
-}
 
 label {
     display: inline-block;
@@ -579,7 +562,7 @@ small,
     border-bottom-left-radius: 0;
 }
 
-.custom-control {
+/* .custom-control {
     position: relative;
     display: block;
     min-height: 1.5rem;
@@ -678,7 +661,7 @@ small,
 
 .custom-control-label::before {
     transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-}
+} */
 
 @media screen and (prefers-reduced-motion: reduce) {
     .custom-control-label::before {
@@ -1540,32 +1523,6 @@ a.text-light:focus {
     }
 }
 
-@media (min-width: 768px) {
-
-    @ keyframes show-navbar-dropdown {
-        0% {
-            transition: visibility .25s, opacity .25s, transform .25s,
-            transform: translate(0, 10px) perspective(200px) rotateX(-2deg),
-            opacity: 0
-        }
-
-        100% {
-            transform: translate(0, 0),
-            opacity: 1;
-        }
-    }
-
-    @keyframes hide-navbar-dropdown {
-        from {
-            opacity: 1;
-        }
-
-        to {
-            transform: translate(0, 10px);
-            opacity: 0;
-        }
-    }
-}
 
 .navbar-collapse-header {
     display: none;

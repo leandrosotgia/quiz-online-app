@@ -77,7 +77,6 @@ $(() => {
                 console.log("NEW TOKEN: " + serverData.token);
                 localStorage.setItem("token", serverData.token);
                 localStorage.setItem("email", serverData.email);
-                localStorage.setItem("username", serverData.username);
                 window.location.href = "index.html";
             });
         }
@@ -85,9 +84,11 @@ $(() => {
 
     $("#btnShowForgotPwd").on("click", function () {
         $(".loginCard").hide();
-        $("#rec_txtCodice").hide();
-        $("#rec_txtEmail").show();
         $(".forgotPasswordCard").show();
+        $("#rec_txtCodice").hide();
+        $("#btnInserisciCodice").hide();
+        $("#btnInviaEmailRecupero").show();
+        $("#rec_txtEmail").show();
         $("#rec_message").text("Inserisci l'email per il recupero della password");
     });
 
@@ -109,7 +110,7 @@ $(() => {
             $("#rec_txtEmail").hide();
 
             $("#rec_message").text("Controlla la tua posta ed inserisci il codice che abbiamo inviato");
-
+            console.log(serverData);
             id = serverData.id;
         });
     });
@@ -125,17 +126,18 @@ $(() => {
         });
         recuperoCodice.done(function (serverData) {
             console.log(serverData);
-            
+            $(".loginCard").show();
+            $(".forgotPasswordCard").hide();
         });
     });
 
-    $("#btnGoBack").on("click", function () {  
+    $("#btnGoBack").on("click", function () {
         let postData = { id: id }
         let clearCode = sendRequestNoCallback("api/clearCode", "POST", postData);
-        clearCode.fail(function(jqXHR){
+        clearCode.fail(function (jqXHR) {
             showAndDismissAlert("danger", "Errore: " + jqXHR.status + " - " + jqXHR.responseText)
         });
-        clearCode.done(function(serverData){
+        clearCode.done(function (serverData) {
             console.log(serverData);
         })
     });

@@ -66,7 +66,7 @@ app.post('/api/recuperoCodice', function (req, res) {
                 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
                 let bodyHtml = "<html><body><br /><br /><h1>Recupero Password</h1>" +
-                    "<h3 style='font-weight: normal; font-size: 18pt;>password: " + password + "</h3>" +
+                    "<h3 style='font-weight: normal; font-size: 18pt;'>password: " + password + "</h3>" +
                     "<br><br><h4>Inserisci questo codice nella casella di testo sul sito per generare una nuova password</h4>"
                 "</body></html>";
                 const message = {
@@ -112,7 +112,6 @@ app.post('/api/recuperoEmail', function (req, res) {
     mongoFunctions.findEmail(req, "test", "users", query, function (err, data) {
         if (err.codeErr == 200) {
             console.log("EMAIL OK");
-            res.send({ msg: "Email OK" });
 
             let codice = Math.random().toString(36).substring(2, 7).toUpperCase();
             let id = codiciRecupero.length + 1;
@@ -132,7 +131,7 @@ app.post('/api/recuperoEmail', function (req, res) {
             process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
             let bodyHtml = "<html><body><br /><br /><h1>Recupero Password</h1>" +
-                "<h3 style='font-weight: normal; font-size: 18pt;>Codice: " + codice + "</h3>" +
+                "<h3 style='font-weight: normal; font-size: 18pt;'>Codice: " + codice + "</h3>" +
                 "<br><br><h4>Inserisci questo codice nella casella di testo sul sito per generare una nuova password</h4>"
             "</body></html>";
             const message = {
@@ -149,7 +148,7 @@ app.post('/api/recuperoEmail', function (req, res) {
                     error(req, res, { code: err.codeErr, message: err.message });
                 }
                 else {
-                    console.log("Mail inviata correttamente!");
+                    console.log("Mail inviata correttamente! id: " + id);
                     process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 1;
                     res.send({ msg: "Email di recupero inviata", id: id });
                 }

@@ -1,4 +1,12 @@
 $(() => {
+
+    
+    $("#txtNome").text(localStorage.getItem("nome"));
+    $("#txtCognome").text(localStorage.getItem("cognome"));
+    $("#txtEmail").text(localStorage.getItem("email"));
+    $("#txtPassword").text(localStorage.getItem("password"));
+    $("#txtUsername").text(localStorage.getItem("username"));
+
     $("#panelVoti").hide();
 
     $("#txtVisUsername").text(localStorage.getItem('username'));
@@ -12,6 +20,10 @@ $(() => {
     $("#btnShowSettings").on("click", function () {
         $("#panelSettings").show();
         $("#panelVoti").hide();
+    });
+
+    $("#btnSalva").on("click", function(){
+        showAndDismissAlert("danger", "<strong>Errore: </strong>Funzione non presente")
     });
 
     function showAndDismissAlert(type, message) {
@@ -58,16 +70,4 @@ $(() => {
             window.location.href = "login.html";
         });
     }
-
-    /*
-                                                            <tr class="bg-danger">
-                                                            <th scope="row" class="col-3">1</th>
-                                                            <td class="col-3">Mark</td>
-                                                            <td class="col-3">Otto</td>
-                                                            <td class="col-3">@mdo</td>
-                                                        </tr>
-    
-    */
-
-
 });
